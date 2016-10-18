@@ -2,7 +2,7 @@
 
 use Exception;
 
-class WidgetAuthorizationException extends Exception
+class WidgetStubNotFoundException extends Exception
 {
 
 }

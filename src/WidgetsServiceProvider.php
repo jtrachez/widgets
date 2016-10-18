@@ -4,9 +4,14 @@ namespace Tequila\Widgets;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Tequila\Widgets\Console\Commands\WidgetMake;
 
 class WidgetsServiceProvider extends ServiceProvider
 {
+
+    protected $commands = [
+        WidgetMake::class
+    ];
 
     public function boot()
     {
@@ -16,8 +21,10 @@ class WidgetsServiceProvider extends ServiceProvider
 
     public function register()
     {
+
         $this->mergeConfig();
         $this->registerManager();
+        $this->registerCommands();
     }
 
     private function initBladeDirectives()
@@ -52,5 +59,10 @@ class WidgetsServiceProvider extends ServiceProvider
         $this->app->singleton('widgets', function ($app) {
             return new WidgetsManager($app);
         });
+    }
+
+    private function registerCommands()
+    {
+        return $this->commands($this->commands);
     }
 }

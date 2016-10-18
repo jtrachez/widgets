@@ -1,0 +1,23 @@
+<?php
+
+namespace {{namespace}}{{type}};
+
+use Tequila\Widgets\BaseWidget;
+
+class {{class_name}} extends BaseWidget
+{
+    protected $view = '{{type_snake}}.widgets.{{class_name_snake}}';
+
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     *  Return widget contents
+     */
+    protected function content()
+    {
+        return view($this->view);
+    }
+}
